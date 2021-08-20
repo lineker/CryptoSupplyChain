@@ -1,11 +1,15 @@
 # Crypto Supply Chain
 
+### sequence diagram
 ![truffle test](images/sequence.png)
 
+### state diagram
 ![truffle test](images/state.png)
 
+### class diagram
 ![truffle test](images/class.png)
 
+### activity diagram
 ![truffle test](images/activity.png)
 
 ## Roles and Access controls
