@@ -18,11 +18,14 @@
  *
  */
 
-// const HDWallet = require('truffle-hdwallet-provider');
-// const infuraKey = "fj4jll3k.....";
+
+ const HDWalletProvider = require('@truffle/hdwallet-provider');
+
 //
-// const fs = require('fs');
-// const mnemonic = fs.readFileSync(".secret").toString().trim();
+const fs = require('fs');
+const mnemonic = fs.readFileSync(".secret").toString().trim();
+const infuraKey = fs.readFileSync(".infura").toString().trim();
+const alchemyKey = fs.readFileSync(".alchemy").toString().trim();
 
 module.exports = {
   /**
@@ -53,7 +56,29 @@ module.exports = {
       gas: 6721975,           // Gas sent with each transaction (default: ~6700000)
       gasPrice: 20000000000,  // 20 gwei (in wei) (default: 100 gwei)
     },
-
+    rinkeby: {
+      provider: () => new HDWalletProvider({mnemonic:mnemonic, providerOrUrl:`https://rinkeby.infura.io/v3/${infuraKey}`}),
+      network_id: 4,       // rinkeby's id
+      // from: "0x4e3E5df1C100725B940eeaC84767309c18B5CDC9",
+      gasPrice: 10000000000,
+      gas: 4500000,        // rinkeby has a lower block limit than mainnet
+      confirmations: 2,    // # of confs to wait between deployments. (default: 0)
+      timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+      networkCheckTimeout: 10000,
+      skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
+    },
+    rinkebyal: {
+      provider: () => new HDWalletProvider({mnemonic:mnemonic, providerOrUrl:`https://eth-rinkeby.alchemyapi.io/v2/${alchemyKey}`}),
+      network_id: 4,       // rinkeby's id
+      // from: "0x4e3E5df1C100725B940eeaC84767309c18B5CDC9",
+      //gasPrice: 10000000000,
+      gas: 4500000,        // rinkeby has a lower block limit than mainnet
+      confirmations: 2,    // # of confs to wait between deployments. (default: 0)
+      //timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+      //networkCheckTimeout: 10000,
+      skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
+    },
+    // Another 
     // Another network with more advanced options...
     // advanced: {
       // port: 8777,             // Custom port

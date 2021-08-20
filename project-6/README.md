@@ -29,3 +29,12 @@ Not used
 - Node v14.17.0
 - Web3.js v1.3.6
 - Ganache 5
+
+
+# Commands
+- npm run dev
+- truffle migrate --reset
+- truffle migrate --network rinkebyal
+
+# Contract Address on Rinkeby
+
